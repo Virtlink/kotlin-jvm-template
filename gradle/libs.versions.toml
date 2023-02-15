@@ -1,0 +1,26 @@
+[versions]
+# Plugins
+kotlin                          = "1.8.0"           # https://kotlinlang.org/
+gitversion                      = "0.15.0"          # https://github.com/palantir/gradle-git-version
+benmanesVersions                = "0.44.0"          # https://github.com/ben-manes/gradle-versions-plugin
+testlogger                      = "3.2.0"           # https://github.com/radarsh/gradle-test-logger-plugin
+
+# Testing
+junit                           = "5.9.1"           # https://junit.org
+kotest                          = "5.5.4"           # https://kotest.io/
+
+
+[plugins]
+kotlin-jvm                      = { id = "org.jetbrains.kotlin.jvm",                                        version.ref = "kotlin" }
+gitversion                      = { id = "com.palantir.git-version",                                        version.ref = "gitversion" }
+benmanesVersions                = { id = "com.github.ben-manes.versions",                                   version.ref = "benmanesVersions" }
+testlogger                      = { id = "com.adarshr.test-logger",                                         version.ref = "testlogger"}
+
+
+[libraries]
+
+# Testing
+junit                           = { module = "org.junit.jupiter:junit-jupiter",                             version.ref = "junit" }
+kotest                          = { module = "io.kotest:kotest-runner-junit5",                              version.ref = "kotest" }
+kotest-assertions               = { module = "io.kotest:kotest-assertions-core",                            version.ref = "kotest" }
+kotest-property                 = { module = "io.kotest:kotest-property",                                   version.ref = "kotest" }
