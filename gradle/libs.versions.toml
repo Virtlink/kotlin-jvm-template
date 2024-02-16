@@ -1,24 +1,23 @@
 [versions]
 # Plugins
-kotlin                          = "1.8.0"           # https://kotlinlang.org/
-gitversion                      = "0.15.0"          # https://github.com/palantir/gradle-git-version
-benmanesVersions                = "0.44.0"          # https://github.com/ben-manes/gradle-versions-plugin
-testlogger                      = "3.2.0"           # https://github.com/radarsh/gradle-test-logger-plugin
+kotlin                          = "1.9.22"          # https://kotlinlang.org/
+gitVersion                      = "3.0.0"           # https://github.com/palantir/gradle-git-version
+benmanesVersions                = "0.51.0"          # https://github.com/ben-manes/gradle-versions-plugin
+testlogger                      = "4.0.0"           # https://github.com/radarsh/gradle-test-logger-plugin
 
 # Testing
-junit                           = "5.9.1"           # https://junit.org
-kotest                          = "5.5.4"           # https://kotest.io/
+junit                           = "5.10.2"          # https://junit.org (https://github.com/junit-team/junit5/)
+kotest                          = "5.8.0"           # https://kotest.io/ (https://github.com/kotest/kotest)
 
 
 [plugins]
 kotlin-jvm                      = { id = "org.jetbrains.kotlin.jvm",                                        version.ref = "kotlin" }
-gitversion                      = { id = "com.palantir.git-version",                                        version.ref = "gitversion" }
+gitVersion                      = { id = "com.palantir.git-version",                                        version.ref = "gitVersion" }
 benmanesVersions                = { id = "com.github.ben-manes.versions",                                   version.ref = "benmanesVersions" }
 testlogger                      = { id = "com.adarshr.test-logger",                                         version.ref = "testlogger"}
 
 
 [libraries]
-
 # Testing
 junit                           = { module = "org.junit.jupiter:junit-jupiter",                             version.ref = "junit" }
 kotest                          = { module = "io.kotest:kotest-runner-junit5",                              version.ref = "kotest" }

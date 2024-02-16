@@ -6,7 +6,7 @@ import com.adarshr.gradle.testlogger.theme.ThemeType
 plugins {
     java
     alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.gitversion)
+    alias(libs.plugins.gitVersion)
     alias(libs.plugins.benmanesVersions)
     alias(libs.plugins.testlogger)
 }
