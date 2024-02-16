@@ -1,5 +1,55 @@
-## How to Publish
-How to publish a new version of the library.
+# Publishing
+How to publish a new version of this library?
+
+Refer to [the setup](#setup) on how to set up the repository and your system for publishing.
+
+
+## Automatic Publishing
+Automatic publishing is preferred over manual publishing. To publish a new version of the library automatically, follow these steps:
+
+1.  Update the `CHANGELOG.md` with the latest changes, create a new release entry, and update the release links at the bottom of the file.
+2.  Commit your changes and ensure there are no new or changed files in the repository.
+3.  Use Git to create a tag with the new version number, such as `0.1.2-alpha`.
+    ```shell
+    git tag 0.1.2-alpha
+    ```
+4.  Verify that the version number is correctly picked up using:
+    ```shell
+    ./gradlew printVersion
+    ```
+    The version number should not contain a commit hash and should not end with `.dirty`.
+5.  Push the tag to the remote repository:
+    ```shell
+    git push origin 0.1.2-alpha
+    ```
+6.  Once the library has been published to Maven Central, it [must be released](#releasing-the-artifact).
+7.  Update the `README.md` and documentation to reflect the latest release of the library.
+
+
+## Manual Publishing
+To publish a new version of the library manually from the command-line, follow the above steps and then:
+
+1.  Build, sign, and publish the artifact using:
+    ```shell
+    ./gradlew publish
+    ```
+2.  Once the library has been published to Maven Central, it [must be released](#releasing-the-artifact).
+3.  Update the `README.md` and documentation to reflect the latest release of the library.
+
+
+## Releasing the Artifact
+After publishing, the artifact must be released manually from Maven Central. To do so, follow these steps:
+1.  Login into OSSRH at [s01.oss.sonatype.org](https://s01.oss.sonatype.org/)
+2.  Go to 'Staging Repositories' on the left, click the 'Refresh' button at the top to see the repositories.
+3.  Select the repository, and click the 'Close' button at the top.
+    This will validate the package requirements. Wait for it to complete,
+    by periodically clicking the 'Refresh' button at the top.
+4.  Once successfully closed, click the 'Release' button to publish the package on Maven Central.
+    The repository may be dropped after release. Again, wait for the operation to complete.
+5.  Done! It can take a while for the new release to appear on Maven Central at:
+    <https://search.maven.org/artifact/com.example/myapp>
+
+
 
 ## Setup
 In your _home_ directory at `~/gradle.properties`, ensure the file contains properties for signing, publishing to GitHub Packages, and publishing to Maven Central.
@@ -63,46 +113,3 @@ On the [repository settings Secrets page](https://github.com/Virtlink/myapp/sett
 
 - `OSSRH_USERNAME`: The OSSRH token username, e.g., `bYpE4FzT`
 - `OSSRH_TOKEN`: The OSSRH token, e.g., `T33RJJMfxWPlvKhA7pp9izcsgpwbA4FBY3hMoH3+bdk5`
-
-
-## Automatic Publishing
-Automatic publishing is preferred over manual publishing. To publish a new version of the library automatically using GitHub Actions, follow these steps:
-
-1.  Ensure there are no new or changed files in the repository.
-2.  Use Git to create a tag with the new version number, such as `0.1.2-alpha`.
-    ```shell
-    git tag 0.1.2-alpha
-    ```
-3.  Verify that the version number is correctly picked up using:
-    ```shell
-    ./gradlew printVersion
-    ```
-    The version number should not contain a commit hash and should not end with `.dirty`.
-4.  Push the tag to the remote repository:
-    ```shell
-    git push origin 0.1.2-alpha
-    ```
-
-
-## Manual Publishing
-To publish a new version of the library manually from the command-line, follow the above steps and then build, sign, and publish the artifacts to GitHub Packages and Maven Central using:
-```shell
-./gradlew publish
-```
-
-
-## Releasing the Artifact
-After publishing, the artifact must be released manually from Maven Central. To do so, follow these steps:
-1.  Login into OSSRH at [s01.oss.sonatype.org](https://s01.oss.sonatype.org/)
-2.  Go to 'Staging Repositories' on the left, click the 'Refresh' button at the top to see the repositories.
-3.  Select the repository, and click the 'Close' button at the top.
-    This will validate the package requirements. Wait for it to complete,
-    by periodically clicking the 'Refresh' button at the top.
-4.  Once successfully closed, click the 'Release' button to publish the package on Maven Central.
-    The repository may be dropped after release. Again, wait for the operation to complete.
-5.  Done! It can take a while for the new release to appear on Maven Central at:
-    <https://search.maven.org/artifact/com.example/myapp>
-
-
-## Update Documentation
-Finally, update the `README.md` and documentation to reflect the latest release of the library.
