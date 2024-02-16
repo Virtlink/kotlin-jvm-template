@@ -6,7 +6,6 @@ benmanesVersions                = "0.51.0"          # https://github.com/ben-man
 testlogger                      = "4.0.0"           # https://github.com/radarsh/gradle-test-logger-plugin
 
 # Testing
-junit                           = "5.10.2"          # https://junit.org (https://github.com/junit-team/junit5/)
 kotest                          = "5.8.0"           # https://kotest.io/ (https://github.com/kotest/kotest)
 
 
@@ -19,7 +18,6 @@ testlogger                      = { id = "com.adarshr.test-logger",             
 
 [libraries]
 # Testing
-junit                           = { module = "org.junit.jupiter:junit-jupiter",                             version.ref = "junit" }
 kotest                          = { module = "io.kotest:kotest-runner-junit5",                              version.ref = "kotest" }
 kotest-assertions               = { module = "io.kotest:kotest-assertions-core",                            version.ref = "kotest" }
 kotest-property                 = { module = "io.kotest:kotest-property",                                   version.ref = "kotest" }

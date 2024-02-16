@@ -1,22 +1,19 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import com.adarshr.gradle.testlogger.theme.ThemeType
 
-// Workaround for IntelliJ issue where `libs` is errored: https://youtrack.jetbrains.com/issue/KTIJ-19369
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     java
     alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.gitVersion)
-    alias(libs.plugins.benmanesVersions)
-    alias(libs.plugins.testlogger)
+    alias(libs.plugins.gitVersion)          // Set gitVersion() from last Git repository tag
+    alias(libs.plugins.benmanesVersions)    // Check for dependency updates
+    alias(libs.plugins.testlogger)          // Pretty-print test results live to console
 }
 
 allprojects {
     apply(plugin = "kotlin")
     apply(plugin = "java-library")
-    apply(plugin = "com.palantir.git-version")      // Set gitVersion() from last Git repository tag
-    apply(plugin = "com.github.ben-manes.versions") // Check for dependency updates
-    apply(plugin = "com.adarshr.test-logger")       // Pretty-print test results live to console
+    apply(plugin = "com.palantir.git-version")
+    apply(plugin = "com.github.ben-manes.versions")
+    apply(plugin = "com.adarshr.test-logger")
 
     val gitVersion: groovy.lang.Closure<String> by extra
 
@@ -35,8 +32,11 @@ allprojects {
         }
     }
 
+    kotlin {
+        jvmToolchain(11)
+    }
+
     configure<JavaPluginExtension> {
-        toolchain.languageVersion.set(JavaLanguageVersion.of(11))
         withSourcesJar()
         withJavadocJar()
     }
