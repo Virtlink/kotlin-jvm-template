@@ -1,18 +1,3 @@
-# Misc
-.cache
-.DS_Store
-
-
-# Intellij
-.idea/
-!.idea/icon.svg
-!.idea/icon_dark.svg
-*.iws
-out/
-*.iml
-*.ipr
-
-
 # Java
 *.class
 *.log
@@ -24,7 +9,62 @@ out/
 
 # Gradle
 .gradle
-gradle-app.setting
-!gradle-wrapper.jar
-.gradletasknamecache
-**/build/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+
+# IntelliJ
+.idea/
+!.idea/icon.svg
+!.idea/icon_dark.svg
+*.iws
+out/
+*.iml
+*.ipr
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+
+# Eclipse
+.metadata
+.classpath
+.project
+.apt_generated
+.settings
+.springBeans
+.sts4-cache
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.factorypath
+.recommenders/
+.apt_generated/
+.apt_generated_test/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+
+# VS Code
+.vscode/
+
+# Misc
+.cache
+.DS_Store
+*.lock
