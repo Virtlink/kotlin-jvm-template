@@ -13,8 +13,10 @@ plugins {
 }
 
 allprojects {
-    apply(plugin = "kotlin")
     apply(plugin = "java-library")
+    apply(plugin = "maven-publish")
+    apply(plugin = "signing")
+    apply(plugin = "kotlin")
     apply(plugin = "com.palantir.git-version")
     apply(plugin = "com.github.ben-manes.versions")
     apply(plugin = "com.adarshr.test-logger")
@@ -94,17 +96,6 @@ allprojects {
         }
     }
 
-    nexusPublishing {
-        repositories {
-            sonatype {
-                nexusUrl.set(uri("https://oss.sonatype.org/service/local/"))
-                snapshotRepositoryUrl.set(uri("https://oss.sonatype.org/content/repositories/snapshots/"))
-                username.set(project.findProperty("ossrh.user") as String? ?: System.getenv("OSSRH_USERNAME"))
-                password.set(project.findProperty("ossrh.token") as String? ?: System.getenv("OSSRH_TOKEN"))
-            }
-        }
-    }
-
     signing {
         sign(publishing.publications["mavenJava"])
         if (!project.hasProperty("signing.secretKeyRingFile")) {
@@ -126,4 +117,16 @@ allprojects {
     }
 
     tasks.publish { dependsOn(checkNotDirty) }
+}
+
+
+nexusPublishing {
+    repositories {
+        sonatype {
+            nexusUrl.set(uri("https://oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://oss.sonatype.org/content/repositories/snapshots/"))
+            username.set(project.findProperty("ossrh.user") as String? ?: System.getenv("OSSRH_USERNAME"))
+            password.set(project.findProperty("ossrh.token") as String? ?: System.getenv("OSSRH_TOKEN"))
+        }
+    }
 }
