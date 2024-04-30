@@ -48,6 +48,6 @@ Thanks! :heart: :heart: :heart:
 
 Virtlink
 
-[1]: https://github.com/Virtlink/myapp/discussions
-[2]: https://github.com/Virtlink/myapp/issues
+[1]: https://github.com/Virtlink/mylib/discussions
+[2]: https://github.com/Virtlink/mylib/issues
 [3]: https://stackoverflow.com/
