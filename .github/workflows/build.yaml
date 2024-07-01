@@ -14,9 +14,9 @@ jobs:
     name: Build
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        java: [11]
-        gradle: [wrapper]
+        os: ['ubuntu-latest']
+        java-version: ['11']
+        gradle: ['wrapper', '7.6.4', '8.8']
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
