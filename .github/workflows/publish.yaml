@@ -8,7 +8,7 @@ on:  # yamllint disable-line rule:truthy
 
 jobs:
   publish:
-    name: Publish
+    name: 'Publish'
     permissions:
       contents: write
       packages: write
@@ -19,21 +19,21 @@ jobs:
         gradle: [wrapper]     # Just one
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Checkout
+      - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: Validate Gradle wrapper
+      - name: 'Validate Gradle wrapper'
         uses: gradle/actions/wrapper-validation@v3
-      - name: Setup JDK ${{ matrix.java }}
+      - name: "Setup JDK temurin ${{ matrix.java-version }}"
         uses: actions/setup-java@v4
         with:
           java-version: ${{ matrix.java }}
           distribution: 'temurin'
-      - name: Setup Gradle ${{ matrix.gradle }}
+      - name: "Setup Gradle ${{ matrix.gradle-version }}"
         uses: gradle/actions/setup-gradle@v3
         with:
-          gradle-version: ${{ matrix.gradle }}
+          gradle-version: ${{ matrix.gradle-version }}
           build-scan-publish: false   # Might contain private keys or sensitive information
-      - name: Publish to Maven Central
+      - name: 'Publish to Maven Central'
         run: |
           gradle assemble publish closeAndReleaseSonatypeStagingRepository
         env:
@@ -43,7 +43,7 @@ jobs:
           SIGNING_KEY_ID: ${{ secrets.SIGNING_KEY_ID }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
-      - name: Release on GitHub
+      - name: 'Release on GitHub'
         uses: softprops/action-gh-release@v2
         with:
           name: "Release ${{ github.ref_name }}"

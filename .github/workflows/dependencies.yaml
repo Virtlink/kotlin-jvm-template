@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   dependency-submission:
-    name: Submit Dependencies
+    name: 'Submit Dependencies'
     strategy:
       matrix:
         os: [ubuntu-latest]   # Just one
@@ -19,16 +19,16 @@ jobs:
         gradle: [wrapper]     # Just one
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Checkout
+      - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: Validate Gradle wrapper
+      - name: 'Validate Gradle wrapper'
         uses: gradle/actions/wrapper-validation@v3
-      - name: Setup JDK ${{ matrix.java }}
+      - name: "Setup JDK temurin ${{ matrix.java-version }}"
         uses: actions/setup-java@v4
         with:
           java-version: ${{ matrix.java }}
-          distribution: 'temurin'
-      - name: Generate and submit dependency graph
+          distribution: temurin
+      - name: 'Generate and submit dependency graph'
         uses: gradle/actions/dependency-submission@v3
         with:
           gradle-version: ${{ matrix.gradle }}

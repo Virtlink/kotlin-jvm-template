@@ -11,7 +11,7 @@ on:  # yamllint disable-line rule:truthy
 
 jobs:
   build:
-    name: Build
+    name: 'Build'
     strategy:
       matrix:
         os: ['ubuntu-latest']
@@ -19,23 +19,23 @@ jobs:
         gradle: ['wrapper', '7.6.4', '8.8']
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Checkout
+      - name: 'Checkout'
         uses: actions/checkout@v4
-      - name: Validate Gradle wrapper
+      - name: 'Validate Gradle wrapper'
         uses: gradle/actions/wrapper-validation@v3
-      - name: Setup JDK ${{ matrix.java }}
+      - name: "Setup JDK ${{ matrix.java-distribution }} ${{ matrix.java-version }}"
         uses: actions/setup-java@v4
         with:
           java-version: ${{ matrix.java }}
           distribution: 'temurin'
-      - name: Setup Gradle ${{ matrix.gradle }}
+      - name: "Setup Gradle ${{ matrix.gradle-version }}"
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: ${{ matrix.gradle }}
           build-scan-publish: true
           build-scan-terms-of-use-url: "https://gradle.com/help/legal-terms-of-use"
           build-scan-terms-of-use-agree: "yes"
-      - name: Build
+      - name: 'Build'
         run: |
           gradle build
         env:
