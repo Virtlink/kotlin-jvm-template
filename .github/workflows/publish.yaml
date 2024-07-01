@@ -43,9 +43,12 @@ jobs:
           SIGNING_KEY_ID: ${{ secrets.SIGNING_KEY_ID }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+      # Obtain the derived version number in the env.VERSION variable.
+      - run: echo "VERSION=$(gradle -q :printVersion)" >> $GITHUB_ENV
       - name: 'Release on GitHub'
         uses: softprops/action-gh-release@v2
         with:
-          name: "Release ${{ github.ref_name }}"
-          files: "**/build/libs/commons-configuration2-jackson-${{ github.ref_name }}*"
+          name: "Release ${{ env.VERSION }}"
+          files: |
+            **/build/libs/*
           fail_on_unmatched_files: true
