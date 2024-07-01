@@ -14,9 +14,9 @@ jobs:
       packages: write
     strategy:
       matrix:
-        os: [ubuntu-latest]   # Just one
-        java: [11]            # Just one
-        gradle: [wrapper]     # Just one
+        os: ['ubuntu-latest']               # Just one
+        java-version: ['11']                # Just one
+        gradle-version: ['wrapper']         # Just one
     runs-on: ${{ matrix.os }}
     steps:
       - name: 'Checkout'
@@ -26,7 +26,7 @@ jobs:
       - name: "Setup JDK temurin ${{ matrix.java-version }}"
         uses: actions/setup-java@v4
         with:
-          java-version: ${{ matrix.java }}
+          java-version: ${{ matrix.java-version }}
           distribution: 'temurin'
       - name: "Setup Gradle ${{ matrix.gradle-version }}"
         uses: gradle/actions/setup-gradle@v3
