@@ -14,9 +14,19 @@ jobs:
     name: 'Build'
     strategy:
       matrix:
-        os: ['ubuntu-latest']
-        java-version: ['11']
-        gradle-version: ['wrapper', '7.6.4', '8.8']
+        os:
+          - 'ubuntu-latest'
+        java:
+          - version: '11'
+        gradle:
+          - version: '7.6.4'      # Latest stable 7
+            command: 'gradle'
+          - version: '8.8'        # Latest stable 8
+            command: 'gradle'
+          - version: 'current'    # Latest stable
+            command: 'gradle'
+          - version: 'wrapper'
+            command: './gradlew'  # Workaround for issue https://github.com/gradle/actions/issues/273
     runs-on: ${{ matrix.os }}
     steps:
       - name: 'Checkout'
@@ -28,20 +38,20 @@ jobs:
           fetch-tags: true
       - name: 'Validate Gradle wrapper'
         uses: gradle/actions/wrapper-validation@v4
-      - name: "Setup JDK temurin ${{ matrix.java-version }}"
+      - name: "Setup JDK temurin ${{ matrix.java.version }}"
         uses: actions/setup-java@v4
         with:
-          java-version: ${{ matrix.java-version }}
+          java-version: ${{ matrix.java.version }}
           distribution: 'temurin'
-      - name: "Setup Gradle ${{ matrix.gradle-version }}"
+      - name: "Setup Gradle ${{ matrix.gradle.version }}"
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: ${{ matrix.gradle-version }}
+          gradle-version: ${{ matrix.gradle.version }}
           build-scan-publish: true
           build-scan-terms-of-use-url: "https://gradle.com/help/legal-terms-of-use"
           build-scan-terms-of-use-agree: "yes"
       - name: 'Build'
         run: |
-          gradle build
+          ${{matrix.gradle.command}} build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

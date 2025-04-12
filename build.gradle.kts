@@ -25,7 +25,7 @@ allprojects {
 
     group = "com.example"
     version = gitVersion()
-    description = "mylib"
+    description = "A library."
 
     extra["isSnapshotVersion"] = version.toString().endsWith("-SNAPSHOT")
     extra["isDirtyVersion"] = version.toString().endsWith(".dirty")

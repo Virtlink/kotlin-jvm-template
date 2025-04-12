@@ -46,7 +46,7 @@ Thank you! Please open a GitHub pull request with the patch.
 
 Thanks! :heart: :heart: :heart:
 
-Virtlink
+Daniel
 
 [1]: https://github.com/Virtlink/mylib/discussions
 [2]: https://github.com/Virtlink/mylib/issues
