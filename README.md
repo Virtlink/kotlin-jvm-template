@@ -29,7 +29,7 @@ To build the project:
 To the extent possible under law, Daniel A. A. Pelsmaeker has waived all copyright and related or neighboring rights to the Kotlin JVM Template repository. Feel free to use this as you see fit, no attribution required.
 
 
-[github-build-badge]: https://github.com/Virtlink/mylib/actions/workflows/build.yml/badge.svg
+[github-build-badge]: https://github.com/Virtlink/mylib/actions/workflows/build.yaml/badge.svg
 [github-build]: https://github.com/Virtlink/mylib/actions
 [license-badge]: https://img.shields.io/github/license/Virtlink/mylib
 [license]: https://github.com/Virtlink/mylib/blob/main/LICENSE
