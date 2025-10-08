@@ -17,7 +17,7 @@ jobs:
         include:
           - os: 'ubuntu-latest'
             java:
-              version: '11'
+              version: '25'
             gradle:
               version: 'wrapper'
               command: './gradlew'  # Workaround for issue https://github.com/gradle/actions/issues/273
