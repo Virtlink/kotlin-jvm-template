@@ -19,8 +19,6 @@ jobs:
         java:
           - version: '25'
         gradle:
-          - version: '8.14.3'     # Latest stable 8
-            command: 'gradle'
           - version: '9.1.0'      # Latest stable 9
             command: 'gradle'
           - version: 'current'    # Latest stable
