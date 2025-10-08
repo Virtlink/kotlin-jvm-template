@@ -17,7 +17,7 @@ jobs:
         os:
           - 'ubuntu-latest'
         java:
-          - version: '25'
+          - version: '21'
         gradle:
           - version: '9.1.0'      # Latest stable 9
             command: 'gradle'

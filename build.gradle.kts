@@ -43,7 +43,7 @@ allprojects {
     }
 
     kotlin {
-        jvmToolchain(25)
+        jvmToolchain(21) // LTS
     }
 
     configure<JavaPluginExtension> {
