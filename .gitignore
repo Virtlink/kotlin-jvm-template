@@ -64,6 +64,11 @@ local.properties
 # VS Code
 .vscode/
 
+
+# Jujutsu
+/.jj/
+
+
 # Misc
 .cache
 .DS_Store

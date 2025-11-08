@@ -1,0 +1,199 @@
+#############
+## Project ##
+#############
+
+name:
+  help: "Human-readable name of the project"
+  type: str
+
+slug:
+  help: "Slug name of the project"
+  type: str
+  default: "{{ name|lower|replace(' ', '-') }}"
+
+owner:
+  help: "Owner or copyright holder of the project"
+  type: str
+
+## type: library, app, webapp?
+
+
+#############
+## License ##
+#############
+
+license:
+  help: "License"
+  type: str
+  choices:
+    # https://spdx.org/licenses/
+    - None
+    - MIT
+    - Apache-2.0
+    - BSD-3-Clause
+    - BSD-2-Clause
+    - GPL-2
+    - GPL-3
+    - LGPL-2.1
+    - LGPL-3.0
+    - EPL
+    - GNU AGPL
+    - GNU-FDL
+    - GNU-GPL
+    - CC0-1.0
+    - CC-BY-4.0
+    - CC-BY-SA-4.0
+    - CC-BY-NC-4.0
+    - CC-BY-NC-SA-4.0
+    - CC-BY-ND-4.0
+    - CC-BY-NC-ND-4.0
+
+license_file_format:
+  help: "Format of license file"
+  type: str
+  choices:
+    - Markdown
+    - Plain text
+    - None
+  default: Markdown
+
+license_badge:
+  help: "License badge image URL"
+  type: str
+  default: |-
+    {%-   if license == 'AGPL-3.0'        -%} https://img.shields.io/badge/License-AGPL_v3-blue.svg
+    {%- elif license == 'Apache-2.0'      -%} https://img.shields.io/badge/License-Apache_2.0-blue.svg
+    {%- elif license == 'BSD-2-Clause'    -%} https://img.shields.io/badge/License-BSD_2--Clause-orange.svg
+    {%- elif license == 'BSD-3-Clause'    -%} https://img.shields.io/badge/License-BSD_3--Clause-blue.svg
+    {%- elif license == 'CC-BY-4.0'       -%} https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg
+    {%- elif license == 'CC-BY-SA-4.0'    -%} https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg
+    {%- elif license == 'CC-BY-NC-4.0'    -%} https://img.shields.io/badge/License-CC_BY--NC_4.0-lightgrey.svg
+    {%- elif license == 'CC-BY-ND-4.0'    -%} https://img.shields.io/badge/License-CC_BY--ND_4.0-lightgrey.svg
+    {%- elif license == 'CC-BY-NC-SA-4.0' -%} https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg
+    {%- elif license == 'CC-BY-NC-ND-4.0' -%} https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg
+    {%- elif license == 'CC0-1.0'         -%} https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg
+    {%- elif license == 'GPL-2.0'         -%} https://img.shields.io/badge/License-GPL_v2-blue.svg
+    {%- elif license == 'GPL-3.0'         -%} https://img.shields.io/badge/License-GPLv3-blue.svg
+    {%- elif license == 'LGPL-3.0'        -%} https://img.shields.io/badge/License-LGPL_v3-blue.svg
+    {%- elif license == 'MIT'             -%} https://img.shields.io/badge/License-MIT-yellow.svg
+    {%- elif license == 'MPL-2.0'         -%} https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg
+    {%- endif %}
+  when: false
+
+license_badge_link:
+  help: "License badge link"
+  type: str
+  default: |-
+    {%-   if license == 'AGPL-3.0'        -%} https://www.gnu.org/licenses/agpl-3.0
+    {%- elif license == 'Apache-2.0'      -%} https://opensource.org/licenses/Apache-2.0
+    {%- elif license == 'BSD-2-Clause'    -%} https://opensource.org/licenses/BSD-2-Clause
+    {%- elif license == 'BSD-3-Clause'    -%} https://opensource.org/licenses/BSD-3-Clause
+    {%- elif license == 'CC-BY-4.0'       -%} https://creativecommons.org/licenses/by/4.0/
+    {%- elif license == 'CC-BY-SA-4.0'    -%} https://creativecommons.org/licenses/by-sa/4.0/
+    {%- elif license == 'CC-BY-NC-4.0'    -%} https://creativecommons.org/licenses/by-nc/4.0/
+    {%- elif license == 'CC-BY-ND-4.0'    -%} https://creativecommons.org/licenses/by-nd/4.0/
+    {%- elif license == 'CC-BY-NC-SA-4.0' -%} https://creativecommons.org/licenses/by-nc-sa/4.0/
+    {%- elif license == 'CC-BY-NC-ND-4.0' -%} https://creativecommons.org/licenses/by-nc-nd/4.0/
+    {%- elif license == 'CC0-1.0'         -%} http://creativecommons.org/publicdomain/zero/1.0/
+    {%- elif license == 'GPL-2.0'         -%} https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+    {%- elif license == 'GPL-3.0'         -%} https://www.gnu.org/licenses/gpl-3.0
+    {%- elif license == 'LGPL-3.0'        -%} https://www.gnu.org/licenses/lgpl-3.0
+    {%- elif license == 'MIT'             -%} https://opensource.org/licenses/MIT
+    {%- elif license == 'MPL-2.0'         -%} https://opensource.org/licenses/MPL-2.0
+    {%- endif %}
+  when: false
+
+############
+## Gradle ##
+############
+
+build_name:
+  help: "Gradle build name"
+  type: str
+  default: "{{slug}}-project"
+  when: false
+
+project_name:
+  help: "Gradle project name"
+  type: str
+  default: "{{slug}}"
+  when: false
+
+gradle_version:
+  help: "Gradle version"
+  type: str
+  default: "9.2.0"
+  when: false
+
+
+#########
+## VCS ##
+#########
+
+vcs:
+  help: "Version control system with the project sources"
+  type: str
+  choices:
+    - GitHub
+    - GitLab
+    - Other
+    - None
+
+vcs_owner:
+  help: "Owner name on the VCS (usually your username)"
+  type: str
+  default: "{{ owner|lower|replace(' ', '-') }}"
+  when: "{{ vcs != 'None' }}"
+
+vcs_name:
+  help: "Project slug on the VCS"
+  type: str
+  default: "{{ slug }}"
+  when: "{{ vcs != 'None' }}"
+
+vcs_url:
+  help: "VCS url"
+  type: str
+  default: |-
+    {%- if vcs == 'GitHub' -%}
+      https://github.com/{{vcs_owner}}/{{vcs_name}}
+    {%- elif vcs == 'GitLab' -%}
+      https://gitlab.com/{{vcs_owner}}/{{vcs_name}}
+    {%- endif %}
+  when: "{{ vcs != 'None' }}"
+
+# ci_build_badge
+# ci_build_badge_link
+
+# vcs_release_tag_url
+# vcs_discussions_url
+# vcs_issues_url
+
+
+################
+## Publishing ##
+################
+
+# publish_target: maven/github packages/etc
+
+# release_badge
+# release_badge_link
+
+
+
+#####################
+## Copier settings ##
+#####################
+
+_exclude:
+  - "copier.yaml"
+  - "copier.yml"
+  - "~*"
+  - "*.py[co]"
+  - "__pycache__"
+  - ".git"
+  - ".DS_Store"
+  - ".svn"
+  - "license.*.md"
+  - "license.*.txt"
+  - "license.*.summary.md"
