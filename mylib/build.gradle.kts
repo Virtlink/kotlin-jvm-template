@@ -1,6 +1,6 @@
 plugins {
     `java-library`  // Or: java
-    alias(libs.plugins.kotlin.jvm)
+    id("kotlin-common-conventions") // see buildSrc/src/main/kotlin/kotlin-common-conventions.gradle.kts
 }
 
 dependencies {
