@@ -27,25 +27,29 @@ jobs:
             command: './gradlew'  # Workaround for issue https://github.com/gradle/actions/issues/273
     runs-on: ${{ matrix.os }}
     steps:
+
       - name: 'Checkout'
-        uses: actions/checkout@v5
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6.0.3
         with:
           # Gitonium doesn't work on a sparse repository:
           # it requires all tags of all commits to be fetched
           fetch-depth: 0
           fetch-tags: true
+
       - name: "Setup JDK temurin ${{ matrix.java.version }}"
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654  # v5.2.0
         with:
           java-version: ${{ matrix.java.version }}
           distribution: 'temurin'
+
       - name: "Setup Gradle ${{ matrix.gradle.version }}"
-        uses: gradle/actions/setup-gradle@v5
+        uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e  # v6.1.0
         with:
           gradle-version: ${{ matrix.gradle.version }}
           build-scan-publish: true
           build-scan-terms-of-use-url: "https://gradle.com/help/legal-terms-of-use"
           build-scan-terms-of-use-agree: "yes"
+
       - name: 'Build'
         run: |
           ${{matrix.gradle.command}} build
