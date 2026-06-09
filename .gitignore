@@ -16,9 +16,9 @@ build/
 
 
 # IntelliJ
-.idea/*
-!.idea/icon.svg
-!.idea/icon_dark.svg
+**/.idea/*
+!**/.idea/icon.svg
+!**/.idea/icon_dark.svg
 *.iws
 out/
 *.iml
