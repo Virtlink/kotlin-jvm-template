@@ -9,8 +9,6 @@ repositories {
 dependencies {
     // Gradle plugin dependencies
     implementation(plugin(libs.plugins.kotlin.jvm))
-    implementation(plugin(libs.plugins.gitVersion))          // Set gitVersion() from last Git repository tag
-    implementation(plugin(libs.plugins.benmanesVersions))    // Check for dependency updates
     implementation(plugin(libs.plugins.testlogger))          // Pretty-print test results live to console
 }
 

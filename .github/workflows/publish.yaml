@@ -51,7 +51,7 @@ jobs:
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
 
       # Obtain the derived version number in the env.VERSION variable.
-      - run: echo "VERSION=$(${{matrix.gradle.command}} -q :printVersion)" >> $GITHUB_ENV
+      - run: echo "VERSION=$(${{matrix.gradle.command}} -q :printVersion -Dorg.gradle.configuration-cache=false)" >> $GITHUB_ENV
 
       - name: 'Release on GitHub'
         uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda  # v3.0.0

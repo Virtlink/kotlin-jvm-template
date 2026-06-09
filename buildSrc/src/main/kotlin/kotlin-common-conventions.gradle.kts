@@ -6,20 +6,9 @@ plugins {
     signing
     // Plugins defined in buildSrc/build.gradle.kts
     id("org.jetbrains.kotlin.jvm")
-    id("com.palantir.git-version")          // Set gitVersion() from last Git repository tag
-    id("com.github.ben-manes.versions")     // Check for dependency updates
     id("com.adarshr.test-logger")           // Pretty-print test results live to console
 }
 
-val gitVersion: groovy.lang.Closure<String> by extra
-
-group = "com.example"
-version = gitVersion()
-description = "A library."
-
-extra["isSnapshotVersion"] = version.toString().endsWith("-SNAPSHOT")
-extra["isDirtyVersion"] = version.toString().endsWith(".dirty")
-extra["isCI"] = !System.getenv("CI").isNullOrEmpty()
 
 repositories {
     mavenCentral()
@@ -100,7 +89,7 @@ signing {
 
 val checkNotDirty by tasks.registering {
     doLast {
-        if (project.extra["isDirtyVersion"] as Boolean) {
+        if (version.toString().endsWith(".dirty")) {
             throw GradleException("Cannot publish a dirty version: ${project.version}")
         }
     }

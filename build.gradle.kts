@@ -2,6 +2,16 @@ plugins {
     `java-library`
     alias(libs.plugins.nexuspublish)        // Publish on Maven Central
     alias(libs.plugins.dependencycheck)     // Gradle dependency check
+    alias(libs.plugins.gitVersion)          // Set gitVersion() from last Git repository tag
+    alias(libs.plugins.benmanesVersions)    // Check for dependency updates
+}
+
+val gitVersion: groovy.lang.Closure<String> by extra
+
+allprojects {
+    group = "com.example"
+    version = gitVersion()
+    description = "A library."
 }
 
 nexusPublishing {
