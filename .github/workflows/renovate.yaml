@@ -30,7 +30,7 @@ jobs:
     name: 'Update dependencies'
     uses: virtlink/renovate-config/.github/workflows/renovate.yaml@main
     with:
-      log-level: info
+      log-level: debug
     secrets:
       client-id: ${{ secrets.APP_ID }}
       client-private-key: ${{ secrets.APP_PRIVATE_KEY }}
