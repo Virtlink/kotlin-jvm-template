@@ -1,0 +1,36 @@
+---
+# NOTE: This is not a reusable workflow,
+# NOTE: This workflow requires that GitHub Actions is allowed
+#   to create and approve pull requests.
+#   See: https://stackoverflow.com/a/73155199/146622
+# NOTE: This workflow needs a GitHub App with the following permissions:
+# - Commit statuses: Read and write
+# - Contents: Read and write
+# - Metadata: Read-only (required)
+# - Pull requests: Read and write
+# - Workflows: Read and write
+# And the following Actions repository secrets:
+# - APP_ID: The ID of the GitHub APP
+# - APP_PRIVATE_KEY: The contents of the GitHub App's private key .pem file
+
+name: 'Renovate'
+
+on:  # yamllint disable-line rule:truthy
+  schedule:
+    # Run at 06:00 on Saturday
+    - cron: "0 6 * * 1"
+  workflow_dispatch: # Allow manual triggering
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  update-dependencies:
+    name: 'Update dependencies'
+    uses: virtlink/renovate-config/.github/workflows/renovate.yaml@main
+    with:
+      log-level: info
+    secrets:
+      client-id: ${{ secrets.APP_ID }}
+      client-private-key: ${{ secrets.APP_PRIVATE_KEY }}
