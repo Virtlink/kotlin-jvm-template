@@ -1,0 +1,11 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "platform": "github",
+  "extends": ["github>virtlink/renovate-config"],
+  "enabledManagers": ["github-actions", "gitlabci", "gradle", "gradle-wrapper"],
+  "includePaths": [
+    "gradle/libs.versions.toml",
+    "settings.gradle.kts",
+    "gradle/wrapper/gradle-wrapper.properties"
+  ],
+}
