@@ -131,6 +131,6 @@ On the [repository settings Secrets page][repo-secrets], add those values as the
 
 
 [github-dev-settings]: https://github.com/settings/tokens
-[repo-secrets]: https://github.com/[[github_owner]]/[[project_slug]]/settings/secrets/actions
+[repo-secrets]: https://github.com/[[github_owner]]/[[github_project_slug]]/settings/secrets/actions
 [sonatype]: https://oss.sonatype.org/
-[maven-central-artifact]: https://search.maven.org/artifact/[[maven_group]]/[[project_slug]]
+[maven-central-artifact]: https://search.maven.org/artifact/[[maven_group]]/[[maven_project_slug]]

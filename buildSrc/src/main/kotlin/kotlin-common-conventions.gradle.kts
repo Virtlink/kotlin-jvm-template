@@ -39,7 +39,7 @@ publishing {
             pom {
                 name.set("[[project_name]]")
                 description.set(project.description)
-                url.set("https://github.com/[[github_owner]]/[[project_slug]]")
+                url.set("https://github.com/[[github_owner]]/[[github_project_slug]]")
                 inceptionYear.set("[[inception_year]]")
                 licenses {
                     // From: https://spdx.org/licenses/
@@ -57,9 +57,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection.set("scm:git@github.com:[[github_owner]]/[[project_slug]].git")
-                    developerConnection.set("scm:git@github.com:[[github_owner]]/[[project_slug]].git")
-                    url.set("scm:git@github.com:[[github_owner]]/[[project_slug]].git")
+                    connection.set("scm:git@github.com:[[github_owner]]/[[github_project_slug]].git")
+                    developerConnection.set("scm:git@github.com:[[github_owner]]/[[github_project_slug]].git")
+                    url.set("scm:git@github.com:[[github_owner]]/[[github_project_slug]].git")
                 }
             }
         }
@@ -67,7 +67,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = URI("https", "maven.pkg.github.com", "/[[github_owner]]/[[project_slug]]", null)
+            url = URI("https", "maven.pkg.github.com", "/[[github_owner]]/[[github_project_slug]]", null)
             credentials {
                 username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR")
                 password = project.findProperty("gpr.publishKey") as String? ?: System.getenv("GITHUB_TOKEN")

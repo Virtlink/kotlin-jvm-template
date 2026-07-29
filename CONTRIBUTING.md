@@ -48,6 +48,6 @@ Thanks! :heart: :heart: :heart:
 
 [[developer_name]]
 
-[1]: https://github.com/[[github_owner]]/[[project_slug]]/discussions
-[2]: https://github.com/[[github_owner]]/[[project_slug]]/issues
+[1]: https://github.com/[[github_owner]]/[[github_project_slug]]/discussions
+[2]: https://github.com/[[github_owner]]/[[github_project_slug]]/issues
 [3]: https://stackoverflow.com/

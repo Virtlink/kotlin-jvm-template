@@ -22,24 +22,17 @@ project_name:
   help: "The name of the project"
   default: My Library
 
-project_slug:
-  type: str
-  help: "Slug of the project."
-  default: mylib
-  validator: >-
-    {% if not (project_slug | regex_search('^[a-z][a-z0-9-]*$')) %}Use lowercase letters, digits, and hyphens; start with a letter.{% endif %}
-
 project_description:
   type: str
   help: "Short description of the project."
   default: A library.
 
-maven_group:
+project_slug:
   type: str
-  help: "The Maven group in which the project will be published."
-  default: com.example
+  help: "Slug of the project."
+  default: "[[ project_name | lower | regex_replace('[^a-z0-9]+', '-') | regex_replace('^-+|-+$', '') ]]"
   validator: >-
-    {% if not (maven_group | regex_search('^[A-Za-z_][A-Za-z0-9_-]*(\.[A-Za-z_][A-Za-z0-9_-]*)+$')) %}Use at least two dot-separated Maven identifier segments.{% endif %}
+    {% if not (project_slug | regex_search('^[a-z][a-z0-9-]*$')) %}Use lowercase letters, digits, and hyphens; start with a letter.{% endif %}
 
 github_owner:
   type: str
@@ -48,10 +41,31 @@ github_owner:
   validator: >-
     {% if not (github_owner | regex_search('^[A-Za-z0-9][A-Za-z0-9-]*$')) %}Use letters, digits, and hyphens; start with a letter or digit.{% endif %}
 
+github_project_slug:
+  type: str
+  help: "Slug of the GitHub project."
+  default: "[[ project_slug ]]"
+  validator: >-
+    {% if not (github_project_slug | regex_search('^[a-z][a-z0-9-]*$')) %}Use lowercase letters, digits, and hyphens; start with a letter.{% endif %}
+
+maven_group:
+  type: str
+  help: "The Maven group in which the project will be published."
+  default: com.example
+  validator: >-
+    {% if not (maven_group | regex_search('^[A-Za-z_][A-Za-z0-9_-]*(\.[A-Za-z_][A-Za-z0-9_-]*)+$')) %}Use at least two dot-separated Maven identifier segments.{% endif %}
+
+maven_project_slug:
+  type: str
+  help: "Slug of the Maven project."
+  default: "[[ project_slug ]]"
+  validator: >-
+    {% if not (maven_project_slug | regex_search('^[a-z][a-z0-9-]*$')) %}Use lowercase letters, digits, and hyphens; start with a letter.{% endif %}
+
 developer_id:
   type: str
   help: "The Maven ID of the developer."
-  default: virtlink
+  default: "[[ github_owner | lower ]]"
 
 developer_name:
   type: str
@@ -66,4 +80,4 @@ developer_email:
 inception_year:
   type: int
   help: "Inception year of the project."
-  default: 2023
+  default: "[[ '%Y' | strftime ]]"
