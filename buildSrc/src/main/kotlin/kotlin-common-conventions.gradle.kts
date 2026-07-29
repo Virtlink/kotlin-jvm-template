@@ -87,7 +87,7 @@ signing {
     }
 }
 
-val checkNotDirty by tasks.registering {
+val checkNotDirty = tasks.register("checkNotDirty") {
     doLast {
         if (version.toString().endsWith(".dirty")) {
             throw GradleException("Cannot publish a dirty version: ${project.version}")

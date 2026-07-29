@@ -6,11 +6,11 @@ plugins {
     alias(libs.plugins.benmanesVersions)    // Check for dependency updates
 }
 
-val gitVersion: groovy.lang.Closure<String> by extra
+val gitVersion = extra["gitVersion"] as groovy.lang.Closure<*>
 
 allprojects {
     group = "com.example"
-    version = gitVersion()
+    version = gitVersion.call()
     description = "A library."
 }
 
