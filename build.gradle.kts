@@ -9,9 +9,9 @@ plugins {
 val gitVersion = extra["gitVersion"] as groovy.lang.Closure<*>
 
 allprojects {
-    group = "com.example"
-    version = gitVersion.call()
-    description = "A library."
+    group = "[[maven_group]]"
+    version = if (rootProject.file(".git").isDirectory) gitVersion.call() else "0.1.0-SNAPSHOT"
+    description = "[[project_description]]"
 }
 
 nexusPublishing {

@@ -1,4 +1,5 @@
 import com.adarshr.gradle.testlogger.theme.ThemeType
+import java.net.URI
 
 plugins {
     `java-library`
@@ -36,10 +37,10 @@ publishing {
             from(components["java"])
 
             pom {
-                name.set("My Library")
+                name.set("[[project_name]]")
                 description.set(project.description)
-                url.set("https://github.com/Virtlink/mylib")
-                inceptionYear.set("2023")
+                url.set("https://github.com/[[github_owner]]/[[project_slug]]")
+                inceptionYear.set("[[inception_year]]")
                 licenses {
                     // From: https://spdx.org/licenses/
                     license {
@@ -50,15 +51,15 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("virtlink")
-                        name.set("Daniel A. A. Pelsmaeker")
-                        email.set("d.a.a.pelsmaeker@tudelft.nl")
+                        id.set("[[developer_id]]")
+                        name.set("[[developer_name]]")
+                        email.set("[[developer_email]]")
                     }
                 }
                 scm {
-                    connection.set("scm:git@github.com:Virtlink/mylib.git")
-                    developerConnection.set("scm:git@github.com:Virtlink/mylib.git")
-                    url.set("scm:git@github.com:Virtlink/mylib.git")
+                    connection.set("scm:git@github.com:[[github_owner]]/[[project_slug]].git")
+                    developerConnection.set("scm:git@github.com:[[github_owner]]/[[project_slug]].git")
+                    url.set("scm:git@github.com:[[github_owner]]/[[project_slug]].git")
                 }
             }
         }
@@ -66,7 +67,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/Virtlink/mylib")
+            url = URI("https", "maven.pkg.github.com", "/[[github_owner]]/[[project_slug]]", null)
             credentials {
                 username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR")
                 password = project.findProperty("gpr.publishKey") as String? ?: System.getenv("GITHUB_TOKEN")

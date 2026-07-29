@@ -1,5 +1,5 @@
 {
-  description = "Development environment";
+  description = "Development environment;
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -26,6 +26,7 @@
           default = pkgs.mkShell {
             packages = [
               jdk
+              pkgs.copier
             ];
 
             JAVA_HOME = jdk.home;

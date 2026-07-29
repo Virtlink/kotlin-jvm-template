@@ -1,0 +1,69 @@
+_templates_suffix: ""
+_envops:
+  variable_start_string: "[["
+  variable_end_string: "]]"
+  keep_trailing_newline: true
+_exclude:
+  - copier.yml
+  - .git
+  - .svn
+  - .DS_Store
+  - "~*"
+  - "*.py[co]"
+  - __pycache__
+  - .gradle
+  - "**/.gradle"
+  - build
+  - "**/build"
+  - "**/.kotlin"
+
+project_name:
+  type: str
+  help: "The name of the project"
+  default: My Library
+
+project_slug:
+  type: str
+  help: "Slug of the project."
+  default: mylib
+  validator: >-
+    {% if not (project_slug | regex_search('^[a-z][a-z0-9-]*$')) %}Use lowercase letters, digits, and hyphens; start with a letter.{% endif %}
+
+project_description:
+  type: str
+  help: "Short description of the project."
+  default: A library.
+
+maven_group:
+  type: str
+  help: "The Maven group in which the project will be published."
+  default: com.example
+  validator: >-
+    {% if not (maven_group | regex_search('^[A-Za-z_][A-Za-z0-9_-]*(\.[A-Za-z_][A-Za-z0-9_-]*)+$')) %}Use at least two dot-separated Maven identifier segments.{% endif %}
+
+github_owner:
+  type: str
+  help: "The GitHub owner of the repository."
+  default: Virtlink
+  validator: >-
+    {% if not (github_owner | regex_search('^[A-Za-z0-9][A-Za-z0-9-]*$')) %}Use letters, digits, and hyphens; start with a letter or digit.{% endif %}
+
+developer_id:
+  type: str
+  help: "The Maven ID of the developer."
+  default: virtlink
+
+developer_name:
+  type: str
+  help: "The name of the developer."
+  default: Daniel A. A. Pelsmaeker
+
+developer_email:
+  type: str
+  help: "The email address of the developer."
+  default: d.a.a.pelsmaeker@tudelft.nl
+
+inception_year:
+  type: int
+  help: "Inception year of the project."
+  default: 2023

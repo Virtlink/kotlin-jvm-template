@@ -1,6 +1,6 @@
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
-rootProject.name = "mylib-project"
+rootProject.name = "[[project_slug]]-project"
 
-include(":mylib")
+include(":[[project_slug]]")
