@@ -1,24 +1,3 @@
-_templates_suffix: ""
-_envops:
-  variable_start_string: "[["
-  variable_end_string: "]]"
-  keep_trailing_newline: true
-_exclude:
-  - copier.yml
-  - .git
-  - .svn
-  - .DS_Store
-  - "~*"
-  - "*.py[co]"
-  - __pycache__
-  - .gradle
-  - "**/.gradle"
-  - build
-  - "**/build"
-  - "**/.kotlin"
-  - .github/README.md
-  - LICENSE
-
 project_name:
   type: str
   help: "The name of the project"
@@ -83,3 +62,33 @@ inception_year:
   type: int
   help: "Inception year of the project."
   default: "[[ '%Y' | strftime ]]"
+
+
+#####################
+## Copier settings ##
+#####################
+
+_templates_suffix: ""
+
+_envops:
+  variable_start_string: "[["
+  variable_end_string: "]]"
+  keep_trailing_newline: true
+
+_exclude:
+  - copier.yml
+  - .git
+  - .svn
+  - .DS_Store
+  - "~*"
+  - "*.py[co]"
+  - __pycache__
+  - .gradle
+  - "**/.gradle"
+  - build
+  - "**/build"
+  - "**/.kotlin"
+  - .github/README.md
+  - LICENSE
+
+_answers_file: .copier-answers-kotlin-jvm.yml
