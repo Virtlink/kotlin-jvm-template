@@ -7,6 +7,10 @@
 *.ear
 
 
+# Kotlin
+.kotlin/
+
+
 # Gradle
 .gradle
 build/
