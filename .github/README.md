@@ -19,6 +19,11 @@ copier copy . ../my-library
 
 The default development shell supplies JDK 21 and Copier.
 
+## Enable Dependency Submission
+
+Generated projects include `.github/workflows/dependencies.yaml`, which runs the `Submit Dependencies` workflow on pushes to `main`. To let that workflow publish Gradle dependency data to GitHub's dependency graph, go to the generated repository's _Settings_, _Advanced Security_ and enable _Dependency graph_.
+
+
 ## License
 
 [![License: CC0-1.0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
