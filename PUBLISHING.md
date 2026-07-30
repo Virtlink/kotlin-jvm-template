@@ -54,6 +54,19 @@ The `closeAndReleaseSonatypeStagingRepository` task is used to close and release
 
 
 ## Setup
+### License
+Choose a license before publishing. Replace the root `README.md` license placeholder, add a `LICENSE` file, and add Maven license metadata under the `mavenJava` publication's `pom`:
+
+```kotlin
+licenses {
+    license {
+        name.set("<SPDX identifier>")
+        url.set("<canonical license URL>")
+        distribution.set("repo")
+    }
+}
+```
+
 In your _home_ directory at `~/gradle.properties`, ensure the file contains properties for signing, publishing to Metaborg Artifacts, GitHub Packages, and Maven Central.
 
 ### Signing

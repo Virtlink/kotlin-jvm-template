@@ -16,6 +16,8 @@ _exclude:
   - build
   - "**/build"
   - "**/.kotlin"
+  - .github/README.md
+  - LICENSE
 
 project_name:
   type: str

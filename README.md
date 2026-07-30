@@ -19,8 +19,7 @@ To build the project:
 
 
 ## License
-[![License: CC0-1.0](https://licensebuttons.net/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0/)
-To the extent possible under law, [[developer_name]] has waived all copyright and related or neighboring rights to the [[project_name]] repository. Feel free to use this as you see fit, no attribution required.
+TODO: Choose a license and add a `LICENSE` file.
 
 
 [github-build-badge]: https://github.com/[[github_owner]]/[[github_project_slug]]/actions/workflows/build.yaml/badge.svg

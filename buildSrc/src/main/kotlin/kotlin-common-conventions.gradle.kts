@@ -41,14 +41,14 @@ publishing {
                 description.set(project.description)
                 url.set("https://github.com/[[github_owner]]/[[github_project_slug]]")
                 inceptionYear.set("[[inception_year]]")
-                licenses {
-                    // From: https://spdx.org/licenses/
-                    license {
-                        name.set("CC0-1.0")
-                        url.set("https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt")
-                        distribution.set("repo")
-                    }
-                }
+                // licenses {
+                //     // From: https://spdx.org/licenses/
+                //     license {
+                //         name.set("<SPDX identifier>")
+                //         url.set("<canonical license URL>")
+                //         distribution.set("repo")
+                //     }
+                // }
                 developers {
                     developer {
                         id.set("[[developer_id]]")
