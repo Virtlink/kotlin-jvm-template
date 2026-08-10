@@ -5,7 +5,7 @@ gitVersion                      = "5.0.0"           # https://github.com/palanti
 benmanesVersions                = "0.55.0"          # https://github.com/ben-manes/gradle-versions-plugin
 testlogger                      = "4.0.0"           # https://github.com/radarsh/gradle-test-logger-plugin
 nexuspublish                    = "2.0.0"           # https://github.com/gradle-nexus/publish-plugin/
-dependencycheck                 = "12.2.2"          # https://github.com/dependency-check/dependency-check-gradle
+dependencycheck                 = "13.0.0"          # https://github.com/dependency-check/dependency-check-gradle
 
 # Testing
 kotest                          = "6.2.3"           # https://kotest.io/ (https://github.com/kotest/kotest)
