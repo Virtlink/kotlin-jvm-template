@@ -18,7 +18,7 @@ name: 'Renovate'
 on:  # yamllint disable-line rule:truthy
   schedule:
     # Run at 06:00 on Saturday
-    - cron: "0 6 * * 1"
+    - cron: "0 6 * * 6"
   workflow_dispatch: # Allow manual triggering
 
 concurrency:
