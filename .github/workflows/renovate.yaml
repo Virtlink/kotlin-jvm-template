@@ -18,7 +18,7 @@ name: 'Renovate'
 on:  # yamllint disable-line rule:truthy
   schedule:
     # Run at 06:00 on Saturday
-    - cron: "0 6 * * 1"
+    - cron: "0 6 * * 6"
   workflow_dispatch: # Allow manual triggering
 
 concurrency:
@@ -29,8 +29,6 @@ jobs:
   update-dependencies:
     name: 'Update dependencies'
     uses: virtlink/renovate-config/.github/workflows/renovate.yaml@main
-    with:
-      log-level: debug
     secrets:
       client-id: ${{ secrets.APP_CLIENT_ID }}
       client-private-key: ${{ secrets.APP_PRIVATE_KEY }}
