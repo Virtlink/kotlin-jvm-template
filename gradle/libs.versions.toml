@@ -8,7 +8,7 @@ nexuspublish                    = "2.0.0"           # https://github.com/gradle-
 dependencycheck                 = "13.0.0"          # https://github.com/dependency-check/dependency-check-gradle
 
 # Testing
-kotest                          = "6.2.5"           # https://kotest.io/ (https://github.com/kotest/kotest)
+kotest                          = "6.2.6"           # https://kotest.io/ (https://github.com/kotest/kotest)
 
 
 [plugins]
