@@ -1,0 +1,22 @@
+[tools]
+java = "temurin-21"
+
+[tasks.compile]
+description = "Compile production and test sources."
+run = "./gradlew classes testClasses"
+
+[tasks.build]
+description = "Build and verify the project."
+run = "./gradlew build"
+
+[tasks.test]
+description = "Run unit tests."
+run = "./gradlew test"
+
+[tasks.check]
+description = "Run tests and verification checks."
+run = "./gradlew check"
+
+[tasks.package]
+description = "Assemble project artifacts."
+run = "./gradlew assemble"
